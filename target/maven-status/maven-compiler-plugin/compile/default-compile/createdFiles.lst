@@ -1,0 +1,12 @@
+hrs\AbstractEvent$1.class
+hrs\ReservationConfirmedCanceled.class
+hrs\HotelReservationManagementRepository.class
+hrs\ReservationmanagementApplication.class
+hrs\HotelReservationManagementController.class
+hrs\PaymentCanceled.class
+hrs\PolicyHandler.class
+hrs\config\kafka\KafkaProcessor.class
+hrs\AbstractEvent.class
+hrs\ReservationConfirmed.class
+hrs\HotelReservationManagement.class
+hrs\PaymentApproved.class
