@@ -39,13 +39,13 @@ public class PolicyHandler{
         if(paymentCanceled.isMe()){
             System.out.println("##### listener Reservationreceive : " + paymentCanceled.toJson());
 
-            HotelReservationManagement reservationManagement = new HotelReservationManagement();
+            HotelReservationManagement reservationManagement = hotelReservationManagementRepository.findByReservationId(paymentCanceled.getReservationId());
 
-            reservationManagement = hotelReservationManagementRepository.findByReservationId(paymentCanceled.getReservationId());
-            reservationManagement.setReservationId(paymentCanceled.getReservationId());
-            reservationManagement.setStatus("Reservation Canceled");
-
-            hotelReservationManagementRepository.save(reservationManagement);
+            if(reservationManagement != null){
+                reservationManagement.setReservationId(paymentCanceled.getReservationId());
+                reservationManagement.setStatus("Reservation Canceled");
+                hotelReservationManagementRepository.save(reservationManagement);
+            }
         }
     }
 }
