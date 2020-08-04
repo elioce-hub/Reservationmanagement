@@ -41,6 +41,7 @@ public class PolicyHandler{
 
             HotelReservationManagement reservationManagement = new HotelReservationManagement();
 
+            reservationManagement = hotelReservationManagementRepository.findByReservationId(paymentCanceled.getReservationId());
             reservationManagement.setReservationId(paymentCanceled.getReservationId());
             reservationManagement.setStatus("Reservation Canceled");
 
