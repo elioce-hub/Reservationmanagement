@@ -13,19 +13,41 @@ public class HotelReservationManagement {
     private Long id;
     private Long reservationId;
     private String status;
+    private String couponPin;
 
     @PostPersist
     public void onPostPersist(){
-        ReservationConfirmed reservationConfirmed = new ReservationConfirmed();
-        BeanUtils.copyProperties(this, reservationConfirmed);
-        reservationConfirmed.publishAfterCommit();
+
+        if(getCouponPin() == null || getCouponPin().isEmpty()){
+
+            ReservationConfirmed reservationConfirmed = new ReservationConfirmed();
+            BeanUtils.copyProperties(this, reservationConfirmed);
+            reservationConfirmed.publishAfterCommit();
+        } else {
+            //쿠폰발행 req 호출 시
+            try {
+                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @PostUpdate
     public void onPostUpdate(){
-        ReservationConfirmedCanceled reservationConfirmedCanceled = new ReservationConfirmedCanceled();
-        BeanUtils.copyProperties(this, reservationConfirmedCanceled);
-        reservationConfirmedCanceled.publishAfterCommit();
+        if(getCouponPin() == null || getCouponPin().isEmpty()){
+
+            ReservationConfirmedCanceled reservationConfirmedCanceled = new ReservationConfirmedCanceled();
+            BeanUtils.copyProperties(this, reservationConfirmedCanceled);
+            reservationConfirmedCanceled.publishAfterCommit();
+        } else {
+            //쿠폰발행 req 호출 시
+            try {
+                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -50,8 +72,13 @@ public class HotelReservationManagement {
     public void setStatus(String status) {
         this.status = status;
     }
+    public String getCouponPin() {
+        return couponPin;
+    }
 
-
+    public void setCouponPin(String couponPin) {
+        this.couponPin = couponPin;
+    }
 
 
 }
