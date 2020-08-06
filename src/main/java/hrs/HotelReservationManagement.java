@@ -23,14 +23,15 @@ public class HotelReservationManagement {
             ReservationConfirmed reservationConfirmed = new ReservationConfirmed();
             BeanUtils.copyProperties(this, reservationConfirmed);
             reservationConfirmed.publishAfterCommit();
-        } else {
-            //쿠폰발행 req 호출 시
-            try {
-                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+
+        //쿠폰발행 req 호출 시
+        try {
+            Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @PostUpdate
@@ -40,14 +41,15 @@ public class HotelReservationManagement {
             ReservationConfirmedCanceled reservationConfirmedCanceled = new ReservationConfirmedCanceled();
             BeanUtils.copyProperties(this, reservationConfirmedCanceled);
             reservationConfirmedCanceled.publishAfterCommit();
-        } else {
-            //쿠폰발행 req 호출 시
-            try {
-                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+        
+        //쿠폰발행 req 호출 시
+        try {
+            Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
